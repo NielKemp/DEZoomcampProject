@@ -8,20 +8,6 @@
 */
 
 {{ config(materialized='table') }}
-
-with source_data as (
-
-    select 1 as id
-    union all
-    select null as id
-
-)
-
-select *
-from source_data
-
-/*
-    Uncomment the line below to remove records with null `id` values
-*/
-
--- where id is not null
+select t1.*, t2.country
+from {{source('yield_staging', 'wheat')}} t1
+left join {{source('yield_staging', 'geo_coords')}} t2 on t1.lat = t1.lat and t1.long = t2.long
