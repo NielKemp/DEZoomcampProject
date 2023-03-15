@@ -1,0 +1,27 @@
+version: 2
+
+sources:
+    - name: staging
+      #For bigquery:
+      #database: taxi-rides-ny-339813
+
+      # For postgres:
+      database: round-honor-373909
+
+      schema: yield_staging
+
+      # loaded_at_field: record_loaded_at
+      tables:
+        - name: geo_coords
+        - name: maize
+        - name: maize_major
+        - name: maize_second
+        - name: rice
+        - name: rice_major
+        - name: rice_second
+        - name: soybean
+        - name: wheat
+        - name: wheat_spring
+        - name: wheat_winter
+         # freshness:
+           # error_after: {count: 6, period: hour}
