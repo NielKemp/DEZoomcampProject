@@ -22,6 +22,7 @@ def transform(path: Path, year:int) -> pd.DataFrame:
     return df
 
 
+
 @task()
 def write_bq(df: pd.DataFrame, crop:str) -> None:
     """Write DataFrame to BiqQuery"""
@@ -62,5 +63,6 @@ def main_flow(years:list[int] = [1,2],crops:list[str] = ['maize']):
 
 if __name__ == "__main__":
     year = list(range(1982,2016))
-    crop = ['maize', 'maize_major', 'maize_second', 'rice', 'rice_major','rice_second',  'soybean', 'wheat', 'wheat_spring', 'wheat_winter']
+    crop = ['maize','maize_major', 'maize_second', 'rice', 'rice_major','rice_second',  'soybean', 'wheat', 'wheat_spring', 'wheat_winter']
+    #, 
     main_flow(year, crop)    

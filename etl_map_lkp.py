@@ -43,12 +43,12 @@ def process_c4_data():
     for i in ds.variables['lon']:
         hs = pd.Series(h[:,i], index = lat)
         hs = hs.reset_index()
-        if i > 180:
-            i = i -360
+        i = i -180
         hs['long'] = i
         data = data.append(hs)
 
     data.rename(columns = {'index':'lat', 0:'yield'}, inplace = True)
+    data.reset_index(inplace = True)
     return data[['lat', 'long']]
 
 @task()
@@ -93,7 +93,7 @@ def etl_map_lkp() -> None:
     fetch('https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip')
 
     yield_file = process_c4_data()
-
+    
     fin_data = process_maps(yield_file)
 
     path = write_local(fin_data)
