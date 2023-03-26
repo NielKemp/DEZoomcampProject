@@ -21,8 +21,7 @@ The final dataset we build has yield data for each crop between 1982 and 2015 an
 * Crop
 * Country
 
-The final dashboard looks like this: 
-![alt text](https://lookerstudio.google.com/u/0/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7/page/SqGKD)
+The final dashboard can be viewed by clicking [HERE](https://lookerstudio.google.com/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7)
 
 
 DataSets: 
