@@ -35,7 +35,7 @@ The final dashboard can be viewed by clicking [HERE](https://lookerstudio.google
 
 ## Run your own copy: 
 
-Before we run our own copy of the pipelines, we need to setup some things
+Before we run our own copy of the pipelines, we need to setup some things. We'll assume you're using LINUX. 
 
 ### 1. Google Platform
 GCP offers up to 3 months or $300 free, depending on which you hit first. So it's a nice and easy way to dip your toes into cloud computing.
@@ -53,11 +53,35 @@ GCP offers up to 3 months or $300 free, depending on which you hit first. So it'
     * Save it somewhere you can easily find later. (NB: Don't share this key with anybody)
 * Install the Google SDK by following the instructions found [HERE](https://cloud.google.com/sdk/docs/install-sdk)
 * Authenticate the Google SDK and refresh the session token:
-```
-xport GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_credentials>.json
+~~~ 
+
+export GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_credentials>.json
 gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
 gcloud auth application-default login
-```
+
+~~~
+
+
+### 2. Python Environment
+
+You'll need to be able to execute some python code, and we all know how tricky that can get, so we've gone ahead and packaged all the required packages together, you can use your favorite environment manager in python to create a new environment, and then load the packages in the requirments.txt file. 
+
+An example if you have anacondas installed is: (If you get stuck you can reference the [Anacondas Documentation] (https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) )
+* Create a new environment using: ``` conda create --name myenv ```
+* Install pip into the new environment: ``` conda install -n myenv pip ```
+* Activate it using: ``` conda activate myenv ```
+* Install the packages required: ``` pip install -r requirements.txt ```
+
+### 3. Setting up Terraforma and creating Infrastructure
+
+* First, you'll need to download Terraform, and then add the executeable to the BIN directory so you can use the 'Terraform' command from the CLI, to do this run the following CLI commands:
+~~~
+sudo apt-get install unzip
+cd ~/bin
+wget https://releases.hashicorp.com/terraform/1.4.1/terraform_1.4.1_linux_amd64.zip
+unzip terraform_1.4.1_linux_amd64.zip
+rm terraform_1.4.1_linux_amd64.zip
+~~~
 
 
 Configure Identity and Access Management (IAM) for the service account, giving it the following privileges: BigQuery Admin, Storage Admin and Storage Object Admin
