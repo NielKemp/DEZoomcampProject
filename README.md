@@ -24,14 +24,14 @@ The final dataset we build has yield data for each crop between 1982 and 2015 an
 The final dashboard can be viewed by clicking [HERE](https://lookerstudio.google.com/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7)
 
 ## Technologies used: 
-* Cloud: [Google Cloud]
+* Cloud: [Google Cloud](https://cloud.google.com/)
+    * Data lake: [Google Cloud Storage](https://cloud.google.com/storage)
+    * Data transformation: [dbt](https://www.getdbt.com/)
+    * Data warehouse: [Google BigQuery](https://cloud.google.com/bigquery)
 * Infrastructure: [Terraform](https://www.terraform.io/)
 * Orchestration: [Prefect](https://www.prefect.io/)
-* Data lake: [Google Cloud Storage](https://cloud.google.com/storage)
-* Data transformation: [dbt](https://www.getdbt.com/)
-* Data warehouse: [Google BigQuery](https://cloud.google.com/bigquery)
+* Analytics Engineering [dbt](https://getdbt.com)
 * Data visualization: [Google Looker Studio](https://lookerstudio.google.com/u/0/navigation/reporting)
-
 
 ## Run your own copy: 
 
@@ -82,6 +82,42 @@ wget https://releases.hashicorp.com/terraform/1.4.1/terraform_1.4.1_linux_amd64.
 unzip terraform_1.4.1_linux_amd64.zip
 rm terraform_1.4.1_linux_amd64.zip
 ~~~
+* Navigate to the Terraform directory containing the main.tf and variables.tf folder
+* Execute the following commands using CLI
+~~~
+terraform init
+terraform plan
+terraform apply
+~~~
+
+### 4. Setting up Orchestration
+
+Prefect should have been installed as part of the environment creation, so this section will focus on setting up the blocks required. 
+
+Start the prefect server by running ``` prefect orion start ```
+Once it's up and running you can access the GUI at: http://127.0.0.1:4200/ 
+* Note, you may need to setup port forwarding if you're working on a VM. 
+
+You can create blocks [HERE](http://127.0.0.1:4200/blocks)
+
+Take not of where your GCP credentials are stored, you'll need them!
+
+Create the following blocks in Prefect, in order to change less things later on in the code, assign the same names as given in brackets. 
+* GCP Credentials (zoom-gcp-creds)
+* GCS Bucket (zoom-gcs-block)
+
+### 5. Running the pipeline
+
+Now that everything is set up, you can run the pipeline. 
+
+Execute the files by running the following commands in order, please note it takes quite a long time to run:
+* ``` python etl_web_to_gcs.py ```  NOTE: Quite a lot of files, takes an hour or so
+* ``` python etl_gcs_to_bq.py ```   NOTE: Quite a lot of files, takes an hour or so
+* ``` python etl_map_lkp.py ```     NOTE: This is an extremely long running piece of code, it runs for between 2 and 3 hours!!!
+* ``` python etl_map_lkp_bq.py ```  
+
+### 5. Analytics Engineering
+
 
 
 Configure Identity and Access Management (IAM) for the service account, giving it the following privileges: BigQuery Admin, Storage Admin and Storage Object Admin
