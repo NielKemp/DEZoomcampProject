@@ -22,7 +22,43 @@ The final dataset we build has yield data for each crop between 1982 and 2015 an
 * Country
 
 The final dashboard can be viewed by clicking [HERE](https://lookerstudio.google.com/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7)
-Alsso test: ![alt text](https://lookerstudio.google.com/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7)
+
+## Technologies used: 
+* Cloud: [Google Cloud]
+* Infrastructure: [Terraform](https://www.terraform.io/)
+* Orchestration: [Prefect](https://www.prefect.io/)
+* Data lake: [Google Cloud Storage](https://cloud.google.com/storage)
+* Data transformation: [dbt](https://www.getdbt.com/)
+* Data warehouse: [Google BigQuery](https://cloud.google.com/bigquery)
+* Data visualization: [Google Looker Studio](https://lookerstudio.google.com/u/0/navigation/reporting)
+
+
+## Run your own copy: 
+
+Before we run our own copy of the pipelines, we need to setup some things
+
+### 1. Google Platform
+GCP offers up to 3 months or $300 free, depending on which you hit first. So it's a nice and easy way to dip your toes into cloud computing.
+* Create an account [HERE](https://cloud.google.com/free) 
+* After registering, create a new project [HERE](https://console.cloud.google.com/cloud-resource-manager)
+* Create a service account by clicking [HERE](https://console.cloud.google.com/iam-admin/serviceaccounts)
+* Assign the following permissions to the service account you just created:
+    * BigQuery Admin
+    * Storage Admin
+    * Storage Object Admin
+* Next we'll create some KEYS by following the setps giver: 
+    * Navigate to the following: IAM and Admin -> Service Account -> Keys
+    * Click on ADD KEY
+    * Generate a new JSON Key
+    * Save it somewhere you can easily find later. (NB: Don't share this key with anybody)
+* Install the Google SDK by following the instructions found [HERE](https://cloud.google.com/sdk/docs/install-sdk)
+* Authenticate the Google SDK and refresh the session token:
+```export GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_credentials>.json
+gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
+gcloud auth application-default login```
+
+
+Configure Identity and Access Management (IAM) for the service account, giving it the following privileges: BigQuery Admin, Storage Admin and Storage Object Admin
 
 
 DataSets: 
