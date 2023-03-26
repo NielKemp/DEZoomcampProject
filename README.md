@@ -53,9 +53,11 @@ GCP offers up to 3 months or $300 free, depending on which you hit first. So it'
     * Save it somewhere you can easily find later. (NB: Don't share this key with anybody)
 * Install the Google SDK by following the instructions found [HERE](https://cloud.google.com/sdk/docs/install-sdk)
 * Authenticate the Google SDK and refresh the session token:
-```export GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_credentials>.json
+```
+xport GOOGLE_APPLICATION_CREDENTIALS=<path_to_your_credentials>.json
 gcloud auth activate-service-account --key-file $GOOGLE_APPLICATION_CREDENTIALS
-gcloud auth application-default login```
+gcloud auth application-default login
+```
 
 
 Configure Identity and Access Management (IAM) for the service account, giving it the following privileges: BigQuery Admin, Storage Admin and Storage Object Admin
