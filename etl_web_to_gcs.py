@@ -26,10 +26,12 @@ def process_c4_data(crop, year):
   
     for i in ds.variables['lon']:
         hs = pd.Series(h[:,i], index = lat)
-        hs = hs.reset_index()
+        hs = hs.reset_index()     
         if i > 180:
             i = i -360
+
         hs['long'] = i
+       
         data = data.append(hs)
 
     data.rename(columns = {'index':'lat', 0:'yield'}, inplace = True)
@@ -85,6 +87,7 @@ def main_flow(crop:list[str] = ['wheat'],year:list[int] = [1982, 1983, 1984]):
 if __name__ == "__main__":
     year = list(range(1982,2016))
     crop = ['maize', 'maize_major', 'maize_second', 'rice', 'rice_major','rice_second',  'soybean', 'wheat', 'wheat_spring', 'wheat_winter']
+        #'maize', 'maize_major', 'maize_second', 'rice', 'rice_major','rice_second',  'soybean', 'wheat', 'wheat_spring', 'wheat_winter']
     main_flow(crop, year)    
 
 
