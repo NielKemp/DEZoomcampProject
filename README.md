@@ -138,4 +138,4 @@ After completing all these steps, you should be able to access the created table
 
 These tables were used to create the dashboard that's pictured below, a live version can also be found [HERE](https://lookerstudio.google.com/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7)
 
-<img src="/FinDashboard.png.jpg">
+<img src="/FinDashboard.png">
