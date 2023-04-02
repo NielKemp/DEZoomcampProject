@@ -116,7 +116,31 @@ Execute the files by running the following commands in order, please note it tak
 * ``` python etl_map_lkp.py ```     NOTE: This is an extremely long running piece of code, it runs for between 2 and 3 hours!!!
 * ``` python etl_map_lkp_bq.py ```  
 
-### 5. Analytics Engineering
+### 6. Analytics Engineering
+
+In order to recreate the logical tables in Google Big Query, you'll need a dbt account. 
+
+You can sign up [HERE](https:/www.getdbt.com) 
+
+Create a new project, and follow the prompts. After setting up a new project and connecting it with your Google Cloud Platform, navigate to the dbt project saved in this repo: https://github.com/NielKemp/DEZoomcampProject/tree/main/dbt
+
+Clone this repo in your DBT instance, and execute the following commands: 
+
+``` dbt build ```
+``` dbt run ```
+
+It should execute the full path and create the neccessary tables in the required schema. 
+
+
+### 7. Dashboard
+
+After completing all these steps, you should be able to access the created tables in Big Query. 
+
+These tables were used to create the dashboard that's found [HERE](https://lookerstudio.google.com/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7)
+
+
+
+
 
 
 
