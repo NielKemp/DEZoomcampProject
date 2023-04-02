@@ -126,8 +126,8 @@ Create a new project, and follow the prompts. After setting up a new project and
 
 Clone this repo in your DBT instance, and execute the following commands: 
 
-``` dbt build ```
-``` dbt run ```
+* ``` dbt build ```
+* ``` dbt run ```
 
 It should execute the full path and create the neccessary tables in the required schema. 
 
@@ -137,22 +137,3 @@ It should execute the full path and create the neccessary tables in the required
 After completing all these steps, you should be able to access the created tables in Big Query. 
 
 These tables were used to create the dashboard that's found [HERE](https://lookerstudio.google.com/reporting/b1e71da9-cf1b-4bbd-adb4-71a560e2c2f7)
-
-
-
-
-
-
-
-Configure Identity and Access Management (IAM) for the service account, giving it the following privileges: BigQuery Admin, Storage Admin and Storage Object Admin
-
-
-DataSets: 
-    - Yields per year per lat/long: https://doi.pangaea.de/10.1594/PANGAEA.909132
-    - Country borders: https://www.naturalearthdata.com/downloads/10m-cultural-vectors/
-
-
-Terraform
-    - command in terminal: terraform init
-    - command in terminal: terraform plan -var="project=round-honor-373909"
-    - command in terminal: terraform apply
