@@ -67,9 +67,10 @@ gcloud auth application-default login
 You'll need to be able to execute some python code, and we all know how tricky that can get, so we've gone ahead and packaged all the required packages together, you can use your favorite environment manager in python to create a new environment, and then load the packages in the requirments.txt file. 
 
 An example if you have anacondas installed is: (If you get stuck you can reference the [Anacondas Documentation] (https://conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#activating-an-environment) )
-* Create a new environment using: ``` conda create --name myenv ```
+* Create a new environment using: ``` conda create --name myenv python=3.9```
 * Install pip into the new environment: ``` conda install -n myenv pip ```
-* Activate it using: ``` conda activate myenv ```
+* Run some prefect setups: ``` prefect config set PREFECT_API_URL=http://127.0.0.1:4200/api ```
+* Activate environment using: ``` conda activate myenv ```
 * Install the packages required: ``` pip install -r requirements.txt ```
 
 ### 3. Setting up Terraforma and creating Infrastructure
